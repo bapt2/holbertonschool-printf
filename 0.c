@@ -36,7 +36,21 @@ int	_printf_string(va_list l)
 	write(1, v, x);
 	return (x);
 }
+/**
+ *_print_integer - function
+ *@l: va_list
+ *
+ *Return: characters printed
+ */
+int _print_integer(va_list l)
+{
+	int v;
 
+	v = (int) va_arg(l, int);
+	return (_putnbr(v));
+}
+
+	
 /**
  *_printf - function that produces output according to a format
  *
@@ -69,6 +83,12 @@ int _printf(const char *format, ...)
 				break;
 			case '%':
 				r += write(1, &format[x], 1);
+				x++;
+				break;
+			case 'd':
+				;
+			case 'i':
+				r += _printf_integer(l);
 				x++;
 				break;
 			case '\0':

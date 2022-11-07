@@ -50,7 +50,7 @@ int _printf(const char *format, ...)
 	va_list	l;
 
 	if (!format)
-		return (0);
+		return (-1);
 	va_start(l, format);
 	r = 0;
 	for (x = 0; format[x]; x++)
@@ -70,6 +70,8 @@ int _printf(const char *format, ...)
 			case '%':
 				r += write(1, &format[x], 1);
 				x++;
+				break;
+			case '\0':
 				break;
 			default:
 				r += write(1, &format[x], 1);

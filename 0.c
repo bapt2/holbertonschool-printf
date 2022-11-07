@@ -72,6 +72,7 @@ int _printf(const char *format, ...)
 				x++;
 				break;
 			case '\0':
+				r = -1;
 				break;
 			default:
 				r += write(1, &format[x], 1);

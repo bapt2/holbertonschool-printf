@@ -51,6 +51,49 @@ int	_printf_integer(va_list l)
 }
 
 /**
+ * _printf_runtime - function
+ * @format: const char ptr
+ * @l: va_list
+ * @x: int ptr
+ * @r: int ptr
+ */
+void	_printf_runtime(const char *format, va_list l, int *x, int *r)
+{
+	if (format[*x] == '%')
+	{
+		switch (format[(*x) + 1])
+		{
+		case 'c':
+			*r += _printf_char(l);
+			(*x)++;
+			break;
+		case 's':
+			*r += _printf_string(l);
+			(*x)++;
+			break;
+		case '%':
+			*r += write(1, &format[*x], 1);
+			(*x)++;
+			break;
+		case 'd':
+			;
+		case 'i':
+			*r += _printf_integer(l);
+			(*x)++;
+			break;
+		case '\0':
+			*r = -1;
+			break;
+		default:
+			*r += write(1, &format[*x], 1);
+			break;
+		}
+	}
+	else
+		*r += write(1, &format[*x], 1);
+}
+
+/**
  *_printf - function that produces output according to a format
  *
  *@format: const char ptr
@@ -67,40 +110,7 @@ int _printf(const char *format, ...)
 	va_start(l, format);
 	r = 0;
 	for (x = 0; format[x]; x++)
-	{
-		if (format[x] == '%')
-		{
-			switch (format[x + 1])
-			{
-			case 'c':
-				r += _printf_char(l);
-				x++;
-				break;
-			case 's':
-				r += _printf_string(l);
-				x++;
-				break;
-			case '%':
-				r += write(1, &format[x], 1);
-				x++;
-				break;
-			case 'd':
-				;
-			case 'i':
-				r += _printf_integer(l);
-				x++;
-				break;
-			case '\0':
-				r = -1;
-				break;
-			default:
-				r += write(1, &format[x], 1);
-				break;
-			}
-		}
-		else
-			r += write(1, &format[x], 1);
-	}
+		_printf_runtime(format, l, &x, &r);
 	va_end(l);
 	return (r);
 }

@@ -1,0 +1,26 @@
+.TH _PRINTF 3 2022-11-07 "V.1" "_printf man page"
+.SH NAME
+_printf \- print
+.SH SYNOPSYS
+_printf FORMAT [ARGUMENT]...
+.SH DESCRIPTION
+_Printf is a function that allow us to print argument according to format or executing according to options
+.SH OPTIONS
+there are the following options for the moment
+.TP
+\fB-%c\fP
+print a single character
+.TP
+\fB-%s\fP
+print a string
+.TP
+\fB-%%\fP
+print a percent sign
+.TP
+\fB-%d\fP
+print a decimal (base 10) number
+.TP
+\fB-%i\fP
+print a integer in base 10
+.SH AUTHOR
+baptiste and thibault

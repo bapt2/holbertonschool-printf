@@ -45,7 +45,8 @@ int _printf(const char *format, ...)
 	int	x;
 	va_list	l;
 
-
+	if (!format)
+		return (0);
 	va_start(l, format);
 	r = 0;
 	for (x = 0; format[x]; x++)

@@ -4,6 +4,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+int	_putnbr(int v);
+
 int	_printf_char(va_list l);
 int	_printf_string(va_list l);
 int	_printf(const char *format, ...);

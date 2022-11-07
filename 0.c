@@ -25,8 +25,12 @@ int	_printf_string(va_list l)
 {
 	char	*v;
 	int	x;
+	char	*n;
 
+	n = "(null)";
 	v = (char *) va_arg(l, char *);
+	if (!v)
+		return (write(1, n, 6));
 	for (x = 0; v[x]; x++)
 		;
 	write(1, v, x);

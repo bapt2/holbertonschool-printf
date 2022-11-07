@@ -37,12 +37,12 @@ int	_printf_string(va_list l)
 	return (x);
 }
 /**
- * _print_integer - function
+ * _printf_integer - function
  * @l: va_list
  *
  * Return: characters printed
  */
-int	_print_integer(va_list l)
+int	_printf_integer(va_list l)
 {
 	int v;
 

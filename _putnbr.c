@@ -4,7 +4,7 @@
  * _putnbr_runtime - function
  * @v: long
  * @r: int ptr
- */
+*/
 void	_putnbr_runtime(long v, int *r)
 {
 	char	c;
@@ -31,8 +31,8 @@ void	_putnbr_runtime(long v, int *r)
  * _putnbr - function
  * @v: int
  *
- * Return: characters printed
- */
+ * Return: int
+*/
 int	_putnbr(int v)
 {
 	int	r;

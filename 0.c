@@ -1,117 +1,61 @@
 #include "main.h"
 
 /**
- * _printf_char - function
- * @l: va_list
- *
- * Return: characters printed
- */
-int	_printf_char(va_list l)
-{
-	unsigned char	v;
-
-	v = (unsigned char) va_arg(l, int);
-	write(1, &v, 1);
-	return (1);
-}
-
-/**
- * _printf_string - function
- * @l: va_list
- *
- * Return: characters printed
- */
-int	_printf_string(va_list l)
-{
-	char	*v;
-	int	x;
-	char	*n;
-
-	n = "(null)";
-	v = (char *) va_arg(l, char *);
-	if (!v)
-		return (write(1, n, 6));
-	for (x = 0; v[x]; x++)
-		;
-	write(1, v, x);
-	return (x);
-}
-/**
- * _printf_integer - function
- * @l: va_list
- *
- * Return: characters printed
- */
-int	_printf_integer(va_list l)
-{
-	int v;
-
-	v = (int) va_arg(l, int);
-	return (_putnbr(v));
-}
-
-/**
  * _printf_runtime - function
- * @format: const char ptr
- * @l: va_list
- * @x: int ptr
- * @r: int ptr
- */
-void	_printf_runtime(const char *format, va_list l, int *x, int *r)
+ * @ctx: context_t ptr
+*/
+void	_printf_runtime(context_t *ctx)
 {
-	if (format[*x] == '%')
+	int	x;
+
+	for (ctx->i = 0; ctx->f[ctx->i]; ctx->i++)
 	{
-		switch (format[(*x) + 1])
+		if (ctx->f[ctx->i] == '%')
 		{
-		case 'c':
-			*r += _printf_char(l);
-			(*x)++;
-			break;
-		case 's':
-			*r += _printf_string(l);
-			(*x)++;
-			break;
-		case '%':
-			*r += write(1, &format[*x], 1);
-			(*x)++;
-			break;
-		case 'd':
-			;
-		case 'i':
-			*r += _printf_integer(l);
-			(*x)++;
-			break;
-		case '\0':
-			*r = -1;
-			break;
-		default:
-			*r += write(1, &format[*x], 1);
-			break;
+			for (x = 0; ctx->h[x].f; x++)
+			{
+				if (ctx->h[x].c == ctx->f[ctx->i + 1])
+				{
+					ctx->h[x].f(ctx);
+					break;
+				}
+			}
+			if (!ctx->h[x].f)
+			{
+				_printf_handler_unknown(ctx);
+			}
+		}
+		else
+		{
+			_printf_handler_normal(ctx);
 		}
 	}
-	else
-		*r += write(1, &format[*x], 1);
 }
 
 /**
- *_printf - function that produces output according to a format
+ * _printf - function
+ * @format: const char ptr
  *
- *@format: const char ptr
- *Return: characters printed
- */
-int _printf(const char *format, ...)
+ * Return: characters printed
+*/
+int	_printf(const char *format, ...)
 {
-	int	r;
-	int	x;
-	va_list	l;
+	int			r;
+	context_t	*ctx;
 
 	if (!format)
 		return (-1);
-	va_start(l, format);
-	r = 0;
-	for (x = 0; format[x]; x++)
-		_printf_runtime(format, l, &x, &r);
-	va_end(l);
+
+	ctx = context_new(0);
+	ctx->f = format;
+
+	va_start(ctx->l, format);
+
+	_printf_runtime(ctx);
+
+	va_end(ctx->l);
+
+	r = ctx->r;
+	context_free(ctx);
 	return (r);
 }
-

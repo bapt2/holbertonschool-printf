@@ -19,6 +19,6 @@ void	_printf_handler_unknown(context_t *ctx)
 	char	v;
 
 	v = '%';
-	ctx->r += write(1, &v, 1);
+	context_write(ctx, &v, 1);
 	ctx->i += 0;
 }

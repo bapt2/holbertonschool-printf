@@ -9,6 +9,7 @@
 
 typedef struct context	context_t;
 typedef struct handler	handler_t;
+typedef struct buffer	buffer_t;
 
 # define i8  int8_t
 # define u8  uint8_t
@@ -17,6 +18,19 @@ typedef struct handler	handler_t;
 # define i64 int64_t
 # define u64 uint64_t
 # define str char *
+
+/**
+ * struct buffer - struct
+ * @size: i32
+ * @curr: i32
+ * @body: str
+*/
+struct buffer
+{
+	i32	size;
+	i32	curr;
+	str	body;
+};
 
 /**
  * struct handler - struct
@@ -31,28 +45,38 @@ struct handler
 
 /**
  * struct context - struct
- * @h: handler_t ptr
  * @f: const char ptr
+ * @h: handler_t ptr
+ * @b: buffer_t ptr
  * @l: va_list
- * @r: int
- * @i: int
+ * @r: i32
+ * @i: i32
 */
 struct context
 {
-	handler_t	*h;
 	const char	*f;
+	handler_t	*h;
+	buffer_t	*b;
 	va_list		l;
-	int		r;
-	int		i;
+	i32		r;
+	i32		i;
 };
 
 void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
-i32		_putnbr(u64 val, i32 size, i32 sign, str base);
+void		_putnbr(context_t *ctx, u64 val, i32 sign, str base);
 
 context_t	*context_new(context_t *ctx);
 context_t	*context_free(context_t *ctx);
 context_t	*context_init_handlers(context_t *ctx);
+context_t	*context_write(context_t *ctx, void *src, i32 size);
+context_t	*context_flush(context_t *ctx);
+
+buffer_t	*buffer_new(buffer_t *buf);
+buffer_t	*buffer_free(buffer_t *buf);
+buffer_t	*buffer_flush(buffer_t *buf);
+i32		buffer_append_byte(buffer_t *buf, u8 v);
+i32		buffer_append_bytes(buffer_t *buf, void *src, i32 size);
 
 void		_printf_handler_normal(context_t *ctx);
 void		_printf_handler_char(context_t *ctx);
@@ -68,6 +92,6 @@ void		_printf_handler_hexadecimal_lower(context_t *ctx);
 void		_printf_handler_hexadecimal_upper(context_t *ctx);
 
 void		_printf_runtime(context_t *ctx);
-int		_printf(const char *format, ...);
+i32		_printf(const char *format, ...);
 
 #endif

@@ -9,7 +9,7 @@ void	_printf_handler_integer(context_t *ctx)
 	int	v;
 
 	v = (int) va_arg(ctx->l, int);
-	ctx->r += _putnbr(v, sizeof(int), 1, "0123456789");
+	_putnbr(ctx, v, 1, "0123456789");
 	ctx->i += 1;
 }
 
@@ -22,7 +22,7 @@ void	_printf_handler_unsigned(context_t *ctx)
 	unsigned int	v;
 
 	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "0123456789");
+	_putnbr(ctx, v, 0, "0123456789");
 	ctx->i += 1;
 }
 
@@ -35,7 +35,7 @@ void	_printf_handler_binary(context_t *ctx)
 	unsigned int	v;
 
 	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "01");
+	_putnbr(ctx, v, 0, "01");
 	ctx->i += 1;
 }
 
@@ -48,7 +48,7 @@ void	_printf_handler_octal(context_t *ctx)
 	unsigned int	v;
 
 	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "01234567");
+	_putnbr(ctx, v, 0, "01234567");
 	ctx->i += 1;
 }
 
@@ -61,6 +61,6 @@ void	_printf_handler_percent(context_t *ctx)
 	char	v;
 
 	v = '%';
-	ctx->r += write(1, &v, 1);
+	context_write(ctx, &v, 1);
 	ctx->i += 1;
 }

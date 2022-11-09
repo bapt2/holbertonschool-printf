@@ -15,6 +15,7 @@ context_t	*context_new(context_t *ctx)
 	ctx->h = 0;
 	ctx->i = 0;
 	ctx->r = 0;
+	ctx->b = buffer_new(0);
 	context_init_handlers(ctx);
 	return (ctx);
 }
@@ -29,9 +30,32 @@ context_t	*context_free(context_t *ctx)
 {
 	if (!ctx)
 		return (0);
-	free(ctx->h);
+
+	if (ctx->h)
+		free(ctx->h);
+
+	context_flush(ctx);
+	if (ctx->b)
+		buffer_free(ctx->b);
+
 	free(ctx);
 	return (0);
+}
+
+/**
+ * context_flush - function
+ * @ctx: context_t ptr
+ *
+ * Return: context_t ptr
+*/
+context_t	*context_flush(context_t *ctx)
+{
+	if (!ctx)
+		return (0);
+	if (!ctx->b)
+		return (0);
+	buffer_flush(ctx->b);
+	return (ctx);
 }
 
 /**
@@ -72,5 +96,24 @@ context_t	*context_init_handlers(context_t *ctx)
 		ctx->h[x] = h[x];
 	}
 	ctx->h[x] = h[x];
+	return (ctx);
+}
+
+/**
+ * context_write - function
+ * @ctx: context_t ptr
+ * @src: void ptr
+ * @size: i32
+ *
+ * Return: context_t ptr
+*/
+context_t	*context_write(context_t *ctx, void *src, i32 size)
+{
+	if (!ctx)
+		return (0);
+	if (!ctx->b)
+		ctx->r += write(1, src, size);
+	else
+		ctx->r += buffer_append_bytes(ctx->b, src, size);
 	return (ctx);
 }

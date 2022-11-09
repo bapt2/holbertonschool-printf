@@ -6,7 +6,7 @@
 */
 void	_printf_runtime(context_t *ctx)
 {
-	int	x;
+	i32	x;
 
 	for (ctx->i = 0; ctx->f[ctx->i]; ctx->i++)
 	{
@@ -40,7 +40,7 @@ void	_printf_runtime(context_t *ctx)
 */
 int	_printf(const char *format, ...)
 {
-	int			r;
+	i32		r;
 	context_t	*ctx;
 
 	if (!format)

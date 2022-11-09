@@ -36,8 +36,16 @@ void	_printf_handler_pointer(context_t *ctx)
 	str	s;
 
 	v = (void *) va_arg(ctx->l, void *);
-	s = "0x";
-	context_write(ctx, s, _strlen(s));
-	_putnbr(ctx, (u64) v, 0, "0123456789ABCDEF");
+	if (!v)
+	{
+		s = "(nil)";
+		context_write(ctx, s, _strlen(s));
+	}
+	else
+	{
+		s = "0x";
+		context_write(ctx, s, _strlen(s));
+		_putnbr(ctx, (u64) v, 0, "0123456789abcdef");
+	}
 	ctx->i += 1;
 }

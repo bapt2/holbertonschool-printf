@@ -50,6 +50,10 @@ context_t	*context_init_handlers(context_t *ctx)
 		{'i',  _printf_handler_integer},
 		{'%',  _printf_handler_percent},
 		{'b',  _printf_handler_binary},
+		{'o',  _printf_handler_octal},
+		{'u',  _printf_handler_unsigned},
+		{'x',  _printf_handler_hexadecimal_lower},
+		{'X',  _printf_handler_hexadecimal_upper},
 		{'\0', _printf_handler_null},
 		{'\0', 0},
 	};

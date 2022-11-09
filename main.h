@@ -62,6 +62,10 @@ void		_printf_handler_percent(context_t *ctx);
 void		_printf_handler_binary(context_t *ctx);
 void		_printf_handler_null(context_t *ctx);
 void		_printf_handler_unknown(context_t *ctx);
+void		_printf_handler_octal(context_t *ctx);
+void		_printf_handler_unsigned(context_t *ctx);
+void		_printf_handler_hexadecimal_lower(context_t *ctx);
+void		_printf_handler_hexadecimal_upper(context_t *ctx);
 
 void		_printf_runtime(context_t *ctx);
 int		_printf(const char *format, ...);

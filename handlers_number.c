@@ -14,6 +14,19 @@ void	_printf_handler_integer(context_t *ctx)
 }
 
 /**
+ * _printf_handler_unsigned - function
+ * @ctx: context_t ptr
+*/
+void	_printf_handler_unsigned(context_t *ctx)
+{
+	unsigned int	v;
+
+	v = (unsigned int) va_arg(ctx->l, unsigned int);
+	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "0123456789");
+	ctx->i += 1;
+}
+
+/**
  * _printf_handler_binary - function
  * @ctx: context_t ptr
 */
@@ -23,6 +36,19 @@ void	_printf_handler_binary(context_t *ctx)
 
 	v = (unsigned int) va_arg(ctx->l, unsigned int);
 	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "01");
+	ctx->i += 1;
+}
+
+/**
+ * _printf_handler_octal - function
+ * @ctx: context_t ptr
+*/
+void	_printf_handler_octal(context_t *ctx)
+{
+	unsigned int	v;
+
+	v = (unsigned int) va_arg(ctx->l, unsigned int);
+	ctx->r += _putnbr(v, sizeof(unsigned int), 0, "01234567");
 	ctx->i += 1;
 }
 

@@ -1,11 +1,13 @@
 #include "main.h"
 
 /**
- * _putnbr_runtime - function
- * @v: long
- * @r: int ptr
+ * _putnbr_runtime_i64 - function
+ * @r: i32 ptr
+ * @v: i64
+ * @b: str
+ * @l: i32
 */
-void	_putnbr_runtime(long v, int *r)
+void	_putnbr_runtime_i64(i32 *r, i64 v, str b, i32 l)
 {
 	char	c;
 
@@ -13,31 +15,68 @@ void	_putnbr_runtime(long v, int *r)
 	{
 		c = '-';
 		*r += write(1, &c, 1);
-		_putnbr_runtime(-v, r);
+		_putnbr_runtime_i64(r, -v, b, l);
 	}
-	else if (v < 10)
+	else if (v < l)
 	{
-		c = '0' + v;
+		c = b[v];
 		*r += write(1, &c, 1);
 	}
 	else
 	{
-		_putnbr_runtime(v / 10, r);
-		_putnbr_runtime(v % 10, r);
+		_putnbr_runtime_i64(r, v / l, b, l);
+		_putnbr_runtime_i64(r, v % l, b, l);
+	}
+}
+
+/**
+ * _putnbr_runtime_u64 - function
+ * @r: i32 ptr
+ * @v: u4
+ * @b: str
+ * @l: i32
+*/
+void	_putnbr_runtime_u64(i32 *r, u64 v, str b, i32 l)
+{
+	char	c;
+
+	if (v < _strlen(b))
+	{
+		c = b[v];
+		*r += write(1, &c, 1);
+	}
+	else
+	{
+		_putnbr_runtime_u64(r, v / l, b, l);
+		_putnbr_runtime_u64(r, v % l, b, l);
 	}
 }
 
 /**
  * _putnbr - function
- * @v: int
- *
+ * @val: u64
+ * @size: i32
+ * @sign: i32
+ * @base: str
  * Return: int
 */
-int	_putnbr(int v)
+i32	_putnbr(u64 val, i32 size, i32 sign, str base)
 {
-	int	r;
+	i32	r;
+	i32	l;
 
+	(void) size;
 	r = 0;
-	_putnbr_runtime((long) v, &r);
+	l = _strlen(base);
+	if (l < 1)
+		return (0);
+	if (sign)
+	{
+		_putnbr_runtime_i64(&r, (i64) val, base, _strlen(base));
+	}
+	else
+	{
+		_putnbr_runtime_u64(&r, val, base, _strlen(base));
+	}
 	return (r);
 }

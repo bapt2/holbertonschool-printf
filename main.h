@@ -4,10 +4,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
 # include <stdio.h>
 
 typedef struct context	context_t;
 typedef struct handler	handler_t;
+
+# define i8  int8_t
+# define u8  uint8_t
+# define i32 int32_t
+# define u32 uint32_t
+# define i64 int64_t
+# define u64 uint64_t
+# define str char *
 
 /**
  * struct handler - struct
@@ -39,7 +48,7 @@ struct context
 
 void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
-int		_putnbr(int v);
+i32		_putnbr(u64 val, i32 size, i32 sign, str base);
 
 context_t	*context_new(context_t *ctx);
 context_t	*context_free(context_t *ctx);
@@ -50,6 +59,7 @@ void		_printf_handler_char(context_t *ctx);
 void		_printf_handler_string(context_t *ctx);
 void		_printf_handler_integer(context_t *ctx);
 void		_printf_handler_percent(context_t *ctx);
+void		_printf_handler_binary(context_t *ctx);
 void		_printf_handler_null(context_t *ctx);
 void		_printf_handler_unknown(context_t *ctx);
 

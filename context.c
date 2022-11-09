@@ -49,6 +49,7 @@ context_t	*context_init_handlers(context_t *ctx)
 		{'d',  _printf_handler_integer},
 		{'i',  _printf_handler_integer},
 		{'%',  _printf_handler_percent},
+		{'b',  _printf_handler_binary},
 		{'\0', _printf_handler_null},
 		{'\0', 0},
 	};

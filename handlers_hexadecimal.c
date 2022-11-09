@@ -38,6 +38,6 @@ void	_printf_handler_pointer(context_t *ctx)
 	v = (void *) va_arg(ctx->l, void *);
 	s = "0x";
 	context_write(ctx, s, _strlen(s));
-	_putnbr(ctx, v, 0, "0123456789ABCDEF");
+	_putnbr(ctx, (u64) v, 0, "0123456789ABCDEF");
 	ctx->i += 1;
 }

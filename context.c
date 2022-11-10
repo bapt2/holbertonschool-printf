@@ -80,7 +80,7 @@ context_t	*context_init_handlers(context_t *ctx)
 		{'X',  _printf_handler_hexadecimal_upper},
 		{'S',  _printf_handler_ascii},
 		{'p',  _printf_handler_pointer},
-		{'r',  _printf_handler_reversed_string},
+		{'r',  _printf_handler_string_reversed},
 		{'\0', _printf_handler_null},
 		{'\0', 0},
 	};

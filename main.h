@@ -64,6 +64,8 @@ struct context
 
 void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
+str		_strrev(char *s);
+str		_strdup(char *s);
 void		_putnbr(context_t *ctx, u64 val, i32 sign, str base);
 
 context_t	*context_new(context_t *ctx);
@@ -92,7 +94,7 @@ void		_printf_handler_hexadecimal_lower(context_t *ctx);
 void		_printf_handler_hexadecimal_upper(context_t *ctx);
 void		_printf_handler_ascii(context_t *ctx);
 void		_printf_handler_pointer(context_t *ctx);
-void		_printf_handler_reversed_string(context_t *ctx);
+void		_printf_handler_string_reversed(context_t *ctx);
 
 void		_printf_runtime(context_t *ctx);
 i32		_printf(const char *format, ...);

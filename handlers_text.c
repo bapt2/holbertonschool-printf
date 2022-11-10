@@ -30,6 +30,24 @@ void	_printf_handler_string(context_t *ctx)
 }
 
 /**
+ * _printf_handler_string_reversed - function
+ * @ctx: context_t ptr
+*/
+void	_printf_handler_string_reversed(context_t *ctx)
+{
+	char	*v;
+
+	v = (char *) va_arg(ctx->l, char *);
+	if (!v)
+		v = _strdup("(null)");
+	else
+		v = _strrev(_strdup(v));
+	context_write(ctx, v, _strlen(v));
+	ctx->i += 1;
+	free(v);
+}
+
+/**
  * _printf_handler_normal - function
  * @ctx: context_t ptr
 */

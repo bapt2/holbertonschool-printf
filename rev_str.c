@@ -25,6 +25,4 @@ void            _printf_handler_reversed_string(context_t *ctx)
 			context_write(ctx, v, _strlen(v));
 	}	
 	ctx->i -= 1;
-_printf("%r", v);
-printf("%r", v);
 }

@@ -5,22 +5,103 @@ _printf \- print
 _printf FORMAT [ARGUMENT]...
 .SH DESCRIPTION
 _Printf is a function that allow us to print argument according to format or executing according to options
-.SH OPTIONS
-there are the following options for the moment
+.SH OPTIONS AND EXAMPLE
+there are the following options and there example for the moment
 .TP
 \fB-%c\fP
 print a single character
 .TP
+\fBEXA:\fP
+_printf("%c", x);
+.TP
 \fB-%s\fP
 print a string
+.TP
+\fBEXA:\fP
+_printf("%s", x);
 .TP
 \fB-%%\fP
 print a percent sign
 .TP
+\fBEXA:\fP
+_printf("%%");
+.TP
 \fB-%d\fP
 print a decimal (base 10) number
 .TP
+\fBEXA:\fP
+_printf("%d", x);
+.TP
 \fB-%i\fP
 print a integer in base 10
+.TP
+\fBEXA:\fP
+_printf("%i", x);
+.TP
+\fB-%b\fP
+print a unsigned int argument converted to binary
+.TP
+\fBEXA:\fP
+_printf("%b", x);
+.TP
+\fB-%u\fP
+print an unsigned decimal (base 10) number
+.TP
+\fBEXA:\fP
+_printf("%u", x);
+.TP
+\fB-%o\fP
+print a number in octal (base 8)
+.TP
+\fBEXA:\fP
+_printf("%o", x);
+.TP
+\fB-%x\fP
+print a number in hexidecimal (base 16) in lowercase
+.TP
+\fBEXA:\fP
+_printf("%x", m);
+.TP
+\fB-%X\fP
+print a number in hexidecimal (base 16) in uppercase
+.TP
+\fBEXA:\fP
+_printf("%X", m);
+.TP
+\fB-%S\\x\fP
+S print the string and the non printable characters(0 < ASCII value < 32 or >= 127) are printed this way: \x followed by the ASCII code value in hexadecimal (upper case - always 2 characters)
+.TP
+\fBEXA:\fP
+_printf("%S\\x", m);
+.TP
+\fB-%p\fP
+print a pointer
+.TP
+\fBEXA:\fP
+_printf("%p", x);
+.TP
+\fB-l\fP
+A prefix with d, i, o, u, x, X, and n types that specifies that the argument is a long int or unsigned long int.
+.TP
+\fBEXA:\fP
+_printf("%ld", m);
+.TP
+\fB-h\fP
+A prefix with d, i, o, u, x, X, and n types that specifies that the argument is a short int or unsigned short int.
+.TP
+\fBEXA:\fP
+_printf("%hd", m);
+.TP
+\fB-%r\fP
+print a reverse string
+.TP
+\fBEXA:\fP
+_printf("%r", x);
+.TP
+\fB-%R\fP
+print a string in rot13
+.TP
+\fBEXA:\fP
+_printf("%R", x);
 .SH AUTHOR
 baptiste and thibault

@@ -102,9 +102,7 @@ context_t	*context_init_handlers(context_t *ctx)
 	}
 	ctx->h = (handler_t *) malloc_try(sizeof(handler_t) * ++x);
 	for (x = 0; h[x].f; x++)
-	{
 		ctx->h[x] = h[x];
-	}
 	ctx->h[x] = h[x];
 	return (ctx);
 }

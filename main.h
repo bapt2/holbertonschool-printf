@@ -65,6 +65,7 @@ void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
 char		*_strrev(char *s);
 char		*_strdup(char *s);
+char		*_strchr(char *s, char v);
 char		*rot13(char *str);
 void		_putnbr(context_t *ctx, u64 val, i32 sign, char *base);
 
@@ -95,7 +96,7 @@ void		_printf_handler_hexadecimal_upper(context_t *ctx);
 void		_printf_handler_ascii(context_t *ctx);
 void		_printf_handler_pointer(context_t *ctx);
 void		_printf_handler_string_reversed(context_t *ctx);
-void		_printf_handler_rot13ed_string(context_t *ctx);
+void		_printf_handler_string_rot13(context_t *ctx);
 
 void		_printf_runtime(context_t *ctx);
 i32		_printf(const char *format, ...);

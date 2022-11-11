@@ -38,10 +38,10 @@ void	_printf_handler_normal(context_t *ctx)
 }
 
 /**
- * _printf_handler_rot13'ed_string
+ * _printf_handler_string_rot13 - handles rot13 applied strings
  * @ctx: context_t ptr
 */
-void    _printf_handler_rot13ed_string(context_t *ctx)
+void    _printf_handler_string_rot13(context_t *ctx)
 {
 	char	*v;
 

@@ -1,4 +1,5 @@
 #include "main.h"
+#include "typestr.h"
 
 /**
  * _putnbr_runtime_i64 - function

@@ -1,4 +1,5 @@
 #include "main.h"
+#include "typestr.h"
 
 /**
  * malloc_try - function

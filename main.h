@@ -17,7 +17,6 @@ typedef struct buffer	buffer_t;
 # define u32 uint32_t
 # define i64 int64_t
 # define u64 uint64_t
-# define str char *
 
 /**
  * struct buffer - struct
@@ -29,7 +28,7 @@ struct buffer
 {
 	i32	size;
 	i32	curr;
-	str	body;
+	char	*body;
 };
 
 /**
@@ -64,9 +63,9 @@ struct context
 
 void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
-str		_strrev(char *s);
-str		_strdup(char *s);
-void		_putnbr(context_t *ctx, u64 val, i32 sign, str base);
+char		*_strrev(char *s);
+char		*_strdup(char *s);
+void		_putnbr(context_t *ctx, u64 val, i32 sign, char *base);
 
 context_t	*context_new(context_t *ctx);
 context_t	*context_free(context_t *ctx);

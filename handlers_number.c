@@ -1,4 +1,5 @@
 #include "main.h"
+#include "typestr.h"
 
 /**
  * _printf_handler_integer - function

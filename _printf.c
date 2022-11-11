@@ -34,7 +34,7 @@ void	_printf_runtime(context_t *ctx)
 }
 
 /**
- * _printf - prints @format to stdout using format specifiers 
+ * _printf - prints @format to stdout using format specifiers
  * @format: const char ptr
  *
  * Return: characters printed
@@ -45,13 +45,13 @@ i32	_printf(const char *format, ...)
 
 	if (!format)
 		return (-1);
-	
+
 	ctx = context_new(0);
 	ctx->f = format;
 
 	va_start(ctx->l, format);
 	_printf_runtime(ctx);
 	va_end(ctx->l);
-	
+
 	return (context_consume(ctx));
 }

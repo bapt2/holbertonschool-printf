@@ -12,7 +12,7 @@ void	_printf_handler_null(context_t *ctx)
 }
 
 /**
- * _printf_handler_unknown - handles the case where no format specifier has been found
+ * _printf_handler_unknown - handles the case where no format's found
  * @ctx: context_t ptr
 */
 void	_printf_handler_unknown(context_t *ctx)
@@ -25,7 +25,7 @@ void	_printf_handler_unknown(context_t *ctx)
 }
 
 /**
- * _printf_handler_normal - handles the case where the character has no specified format
+ * _printf_handler_normal - handles the case where printing is normal
  * @ctx: context_t ptr
 */
 void	_printf_handler_normal(context_t *ctx)

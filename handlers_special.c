@@ -54,7 +54,7 @@ void    _printf_handler_rot13ed_string(context_t *ctx)
 	else
 	{
 		v = _strdup(v);
-		for (x = 0; v[x] < 13; x++)
+		for (x = 0; v[x] <= 13; x++)
 			;
 	}
 	context_write(ctx, &v, 1);

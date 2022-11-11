@@ -36,3 +36,28 @@ void	_printf_handler_normal(context_t *ctx)
 	context_write(ctx, &v, 1);
 	ctx->i += 0;
 }
+
+/**
+ * _printf_handler_rot13'ed_string
+ * @ctx: context_t ptr
+*/
+void    _printf_handler_rot13ed_string(context_t *ctx)
+{
+	char	*v;
+	i32	 x;
+
+	v = (char *) va_arg(ctx->l, char *);
+	if (!v)
+	{
+		v = _strdup("(null)");
+	}
+	else
+	{
+		v = _strdup(v);
+		for (x = 0; v[x] < 13; x++)
+			;
+	}
+	context_write(ctx, &v, 1);
+	ctx->i += 1;
+	free(v);
+}

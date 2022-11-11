@@ -94,6 +94,7 @@ void		_printf_handler_hexadecimal_upper(context_t *ctx);
 void		_printf_handler_ascii(context_t *ctx);
 void		_printf_handler_pointer(context_t *ctx);
 void		_printf_handler_string_reversed(context_t *ctx);
+void		_printf_handler_rot13ed_string(context_t *ctx);
 
 void		_printf_runtime(context_t *ctx);
 i32		_printf(const char *format, ...);

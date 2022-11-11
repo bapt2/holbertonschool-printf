@@ -14,9 +14,7 @@ void	*malloc_try(size_t size)
 
 	r = malloc(size);
 	if (!r)
-	{
 		exit(1);
-	}
 	for (x = 0; x < size; x++)
 		((u8 *) r)[x] = 0;
 	return (r);

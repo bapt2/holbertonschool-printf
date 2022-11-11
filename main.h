@@ -60,6 +60,7 @@ struct context
 	char		m;
 	i32		r;
 	i32		i;
+	i32		os;
 	i32		on;
 	i32		ol;
 	i32		oh;

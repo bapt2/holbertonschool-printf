@@ -8,10 +8,12 @@
 void	_printf_runtime_parse(context_t *ctx)
 {
 	i32	x;
+	i32	y;
 	char	v;
 	str	d;
 
 	d = "0123456789";
+	v = '\0';
 	for (x = 1; ctx->f[ctx->i + x]; x++)
 	{
 		v = ctx->f[ctx->i + x];
@@ -22,14 +24,19 @@ void	_printf_runtime_parse(context_t *ctx)
 		else if (v == 'h')
 			ctx->oh = 1;
 		else if (v == '-')
-			ctx->on *= 1;
+			ctx->os *= 1;
 		else if (_strchr(d, v))
 			ctx->on += _strchr(d, v) - d;
 		else
 			break;
 	}
+	ctx->m = ctx->f[ctx->i + x];
+	for (y = 0; ctx->h[y].f; y++)
+		if (ctx->h[y].c == ctx->m)
+			break;
+	if (!ctx->h[y].f)
+		context_write(ctx, (void *) &ctx->f[ctx->i], 1);
 	ctx->i += x;
-	ctx->m = ctx->f[ctx->i];
 	if (ctx->ol && ctx->oh)
 	{
 		ctx->ol = 0;
@@ -57,10 +64,6 @@ void	_printf_runtime(context_t *ctx)
 					ctx->h[x].f(ctx);
 					break;
 				}
-			}
-			if (!ctx->h[x].f)
-			{
-				_printf_handler_unknown(ctx);
 			}
 		}
 		else

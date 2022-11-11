@@ -71,6 +71,8 @@ char		*_strrev(char *s);
 char		*_strdup(char *s);
 char		*_strchr(char *s, char v);
 char		*rot13(char *str);
+void		_putnbr_runtime_i64(context_t *ctx, i64 v, char *b, i32 l);
+void		_putnbr_runtime_u64(context_t *ctx, u64 v, char *b, i32 l);
 void		_putnbr(context_t *ctx, u64 val, i32 sign, char *base);
 
 context_t	*context_new(context_t *ctx);

@@ -16,7 +16,7 @@ void	_putnbr_runtime_i64(context_t *ctx, i64 v, str b, i32 l)
 	{
 		c = '-';
 		context_write(ctx, &c, 1);
-		_putnbr_runtime_i64(ctx, -v, b, l);
+		_putnbr_runtime_u64(ctx, (u64) -v, b, l);
 	}
 	else if (v < l)
 	{

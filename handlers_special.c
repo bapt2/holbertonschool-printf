@@ -8,7 +8,6 @@
 void	_printf_handler_null(context_t *ctx)
 {
 	ctx->r = -1;
-	ctx->i += 0;
 }
 
 /**
@@ -21,7 +20,6 @@ void	_printf_handler_unknown(context_t *ctx)
 
 	v = '%';
 	context_write(ctx, &v, 1);
-	ctx->i += 0;
 }
 
 /**
@@ -34,7 +32,6 @@ void	_printf_handler_normal(context_t *ctx)
 
 	v = ctx->f[ctx->i];
 	context_write(ctx, &v, 1);
-	ctx->i += 0;
 }
 
 /**
@@ -53,6 +50,5 @@ void    _printf_handler_string_rot13(context_t *ctx)
 	else
 		v = rot13(_strdup(v));
 	context_write(ctx, v, _strlen(v));
-	ctx->i += 1;
 	free(v);
 }

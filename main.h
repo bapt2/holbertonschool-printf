@@ -57,8 +57,12 @@ struct context
 	handler_t	*h;
 	buffer_t	*b;
 	va_list		l;
+	char		m;
 	i32		r;
 	i32		i;
+	i32		on;
+	i32		ol;
+	i32		oh;
 };
 
 void		*malloc_try(size_t size);
@@ -98,6 +102,7 @@ void		_printf_handler_pointer(context_t *ctx);
 void		_printf_handler_string_reversed(context_t *ctx);
 void		_printf_handler_string_rot13(context_t *ctx);
 
+void		_printf_runtime_parse(context_t *ctx);
 void		_printf_runtime(context_t *ctx);
 i32		_printf(const char *format, ...);
 

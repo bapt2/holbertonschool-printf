@@ -7,11 +7,25 @@
 */
 void	_printf_handler_hexadecimal_lower(context_t *ctx)
 {
-	unsigned int	v;
+	unsigned short	vx;
+	unsigned int	vy;
+	unsigned long	vz;
 
-	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	_putnbr(ctx, v, 0, "0123456789abcdef");
-	ctx->i += 1;
+	if (ctx->ol)
+	{
+		vz = (unsigned long) va_arg(ctx->l, unsigned long);
+		_putnbr(ctx, vz, 0, "0123456789abcdef");
+	}
+	else if (ctx->oh)
+	{
+		vx = (unsigned short) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vx, 0, "0123456789abcdef");
+	}
+	else
+	{
+		vy = (unsigned int) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vy, 0, "0123456789abcdef");
+	}
 }
 
 /**
@@ -20,11 +34,25 @@ void	_printf_handler_hexadecimal_lower(context_t *ctx)
 */
 void	_printf_handler_hexadecimal_upper(context_t *ctx)
 {
-	unsigned int	v;
+	unsigned short	vx;
+	unsigned int	vy;
+	unsigned long	vz;
 
-	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	_putnbr(ctx, v, 0, "0123456789ABCDEF");
-	ctx->i += 1;
+	if (ctx->ol)
+	{
+		vz = (unsigned long) va_arg(ctx->l, unsigned long);
+		_putnbr(ctx, vz, 0, "0123456789ABCDEF");
+	}
+	else if (ctx->oh)
+	{
+		vx = (unsigned short) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vx, 0, "0123456789ABCDEF");
+	}
+	else
+	{
+		vy = (unsigned int) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vy, 0, "0123456789ABCDEF");
+	}
 }
 
 /**
@@ -48,5 +76,4 @@ void	_printf_handler_pointer(context_t *ctx)
 		context_write(ctx, s, _strlen(s));
 		_putnbr(ctx, (u64) v, 0, "0123456789abcdef");
 	}
-	ctx->i += 1;
 }

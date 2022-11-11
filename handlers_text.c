@@ -11,7 +11,6 @@ void	_printf_handler_char(context_t *ctx)
 
 	v = (unsigned char) va_arg(ctx->l, int);
 	context_write(ctx, &v, 1);
-	ctx->i += 1;
 }
 
 /**
@@ -27,7 +26,6 @@ void	_printf_handler_string(context_t *ctx)
 		v = "(null)";
 
 	context_write(ctx, v, _strlen(v));
-	ctx->i += 1;
 }
 
 /**
@@ -44,7 +42,6 @@ void	_printf_handler_string_reversed(context_t *ctx)
 	else
 		v = _strrev(_strdup(v));
 	context_write(ctx, v, _strlen(v));
-	ctx->i += 1;
 	free(v);
 }
 
@@ -83,5 +80,4 @@ void	_printf_handler_ascii(context_t *ctx)
 				context_write(ctx, &v[x], 1);
 		}
 	}
-	ctx->i += 1;
 }

@@ -7,11 +7,25 @@
 */
 void	_printf_handler_integer(context_t *ctx)
 {
-	int	v;
+	short	vx;
+	int	vy;
+	long	vz;
 
-	v = (int) va_arg(ctx->l, int);
-	_putnbr(ctx, v, 1, "0123456789");
-	ctx->i += 1;
+	if (ctx->ol)
+	{
+		vz = (long) va_arg(ctx->l, long);
+		_putnbr(ctx, vz, 1, "0123456789");
+	}
+	else if (ctx->oh)
+	{
+		vx = (short) va_arg(ctx->l, int);
+		_putnbr(ctx, vx, 1, "0123456789");
+	}
+	else
+	{
+		vy = (int) va_arg(ctx->l, int);
+		_putnbr(ctx, vy, 1, "0123456789");
+	}
 }
 
 /**
@@ -20,11 +34,25 @@ void	_printf_handler_integer(context_t *ctx)
 */
 void	_printf_handler_unsigned(context_t *ctx)
 {
-	unsigned int	v;
+	unsigned short	vx;
+	unsigned int	vy;
+	unsigned long	vz;
 
-	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	_putnbr(ctx, v, 0, "0123456789");
-	ctx->i += 1;
+	if (ctx->ol)
+	{
+		vz = (unsigned long) va_arg(ctx->l, unsigned long);
+		_putnbr(ctx, vz, 0, "0123456789");
+	}
+	else if (ctx->oh)
+	{
+		vx = (unsigned short) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vx, 0, "0123456789");
+	}
+	else
+	{
+		vy = (unsigned int) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vy, 0, "0123456789");
+	}
 }
 
 /**
@@ -37,7 +65,6 @@ void	_printf_handler_binary(context_t *ctx)
 
 	v = (unsigned int) va_arg(ctx->l, unsigned int);
 	_putnbr(ctx, v, 0, "01");
-	ctx->i += 1;
 }
 
 /**
@@ -46,11 +73,25 @@ void	_printf_handler_binary(context_t *ctx)
 */
 void	_printf_handler_octal(context_t *ctx)
 {
-	unsigned int	v;
+	unsigned short	vx;
+	unsigned int	vy;
+	unsigned long	vz;
 
-	v = (unsigned int) va_arg(ctx->l, unsigned int);
-	_putnbr(ctx, v, 0, "01234567");
-	ctx->i += 1;
+	if (ctx->ol)
+	{
+		vz = (unsigned long) va_arg(ctx->l, unsigned long);
+		_putnbr(ctx, vz, 0, "01234567");
+	}
+	else if (ctx->oh)
+	{
+		vx = (unsigned short) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vx, 0, "01234567");
+	}
+	else
+	{
+		vy = (unsigned int) va_arg(ctx->l, unsigned int);
+		_putnbr(ctx, vy, 0, "01234567");
+	}
 }
 
 /**
@@ -63,5 +104,4 @@ void	_printf_handler_percent(context_t *ctx)
 
 	v = '%';
 	context_write(ctx, &v, 1);
-	ctx->i += 1;
 }

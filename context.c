@@ -14,9 +14,13 @@ context_t	*context_new(context_t *ctx)
 	ctx = (context_t *) malloc_try(sizeof(context_t));
 	ctx->f = 0;
 	ctx->h = 0;
-	ctx->i = 0;
+	ctx->m = 0;
 	ctx->r = 0;
+	ctx->i = 0;
 	ctx->b = buffer_new(0);
+	ctx->on = 0;
+	ctx->ol = 0;
+	ctx->oh = 0;
 	context_init_handlers(ctx);
 	return (ctx);
 }

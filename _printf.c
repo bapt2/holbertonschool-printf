@@ -36,7 +36,7 @@ void	_printf_runtime_parse(context_t *ctx)
 			break;
 	if (!ctx->h[y].f)
 		context_write(ctx, (void *) &ctx->f[ctx->i], 1);
-	ctx->i += x;
+	ctx->i += x - (!ctx->h[y].f);
 	if (ctx->ol && ctx->oh)
 	{
 		ctx->ol = 0;

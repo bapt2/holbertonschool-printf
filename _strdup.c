@@ -2,10 +2,10 @@
 #include "typestr.h"
 
 /**
- * _strdup - function
+ * _strdup - duplicates a string in memory
  * @s: str
  *
- * Return: str
+ * Return: copy of s
 */
 str	_strdup(str s)
 {

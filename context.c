@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * context_new - function
+ * context_new - creates a new context object
  * @ctx: context_t ptr
  *
  * Return: context_t ptr
@@ -22,7 +22,7 @@ context_t	*context_new(context_t *ctx)
 }
 
 /**
- * context_free - function
+ * context_free - frees up a context object
  * @ctx: context_t ptr
  *
  * Return: context_t ptr
@@ -35,32 +35,37 @@ context_t	*context_free(context_t *ctx)
 	if (ctx->h)
 		free(ctx->h);
 
-	context_flush(ctx);
 	if (ctx->b)
+	{
+		buffer_flush(ctx->b);
 		buffer_free(ctx->b);
+	}
 
 	free(ctx);
 	return (0);
 }
 
 /**
- * context_flush - function
+ * context_consume - frees up a context object while returning its result value
  * @ctx: context_t ptr
  *
- * Return: context_t ptr
+ * Return: i32
 */
-context_t	*context_flush(context_t *ctx)
+i32	context_consume(context_t *ctx)
 {
+	i32	r;
+
 	if (!ctx)
 		return (0);
 	if (!ctx->b)
 		return (0);
-	buffer_flush(ctx->b);
-	return (ctx);
+	r = ctx->r;
+	context_free(ctx);
+	return (r);
 }
 
 /**
- * context_init_handlers - function
+ * context_init_handlers - initializes a context object's handlers field
  * @ctx: context_t ptr
  *
  * Return: context_t ptr
@@ -104,7 +109,7 @@ context_t	*context_init_handlers(context_t *ctx)
 }
 
 /**
- * context_write - function
+ * context_write - copies and writes data to the context object's output buffer
  * @ctx: context_t ptr
  * @src: void ptr
  * @size: i32

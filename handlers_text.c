@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _printf_handler_char - function
+ * _printf_handler_char - handles %c
  * @ctx: context_t ptr
 */
 void	_printf_handler_char(context_t *ctx)
@@ -15,7 +15,7 @@ void	_printf_handler_char(context_t *ctx)
 }
 
 /**
- * _printf_handler_string - function
+ * _printf_handler_string - handles %s
  * @ctx: context_t ptr
 */
 void	_printf_handler_string(context_t *ctx)
@@ -31,7 +31,7 @@ void	_printf_handler_string(context_t *ctx)
 }
 
 /**
- * _printf_handler_string_reversed - function
+ * _printf_handler_string_reversed - handles %r
  * @ctx: context_t ptr
 */
 void	_printf_handler_string_reversed(context_t *ctx)
@@ -49,20 +49,7 @@ void	_printf_handler_string_reversed(context_t *ctx)
 }
 
 /**
- * _printf_handler_normal - function
- * @ctx: context_t ptr
-*/
-void	_printf_handler_normal(context_t *ctx)
-{
-	char	v;
-
-	v = ctx->f[ctx->i];
-	context_write(ctx, &v, 1);
-	ctx->i += 0;
-}
-
-/**
- * _printf_handler_ascii - function
+ * _printf_handler_ascii - handles %S
  * @ctx: context_t ptr
 */
 void	_printf_handler_ascii(context_t *ctx)

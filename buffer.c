@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * buffer_new - function
+ * buffer_new - creates a new buffer object
  * @buf: buffer_t ptr
  *
  * Return: buffer_t ptr
@@ -19,7 +19,7 @@ buffer_t	*buffer_new(buffer_t *buf)
 }
 
 /**
- * buffer_free - function
+ * buffer_free - frees up a buffer object
  * @buf: buffer_t ptr
  *
  * Return: buffer_t ptr
@@ -37,7 +37,7 @@ buffer_t	*buffer_free(buffer_t *buf)
 }
 
 /**
- * buffer_flush - function
+ * buffer_flush - pushes buffered data to stdout
  * @buf: buffer_t ptr
  *
  * Return: buffer_t ptr
@@ -57,7 +57,7 @@ buffer_t	*buffer_flush(buffer_t *buf)
 }
 
 /**
- * buffer_append_byte - function
+ * buffer_append_byte - appends a single byte to the buffer
  * @buf: buffer_t ptr
  * @v: u8
  *
@@ -76,7 +76,7 @@ i32	buffer_append_byte(buffer_t *buf, u8 v)
 }
 
 /**
- * buffer_append_bytes - function
+ * buffer_append_bytes - appends a series of byte to the buffer
  * @buf: buffer_t ptr
  * @src: void ptr
  * @size: i32

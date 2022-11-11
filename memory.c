@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * malloc_try - function
+ * malloc_try - allocates memory that is filled with 0 while exiting the program on failure
  * @size: size_t
  *
  * Return: void ptr

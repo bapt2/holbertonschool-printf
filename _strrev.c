@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _strrev - function
+ * _strrev - reverses a write access string
  * @s: str
  *
  * Return: str

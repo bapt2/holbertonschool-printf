@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _printf_runtime - function
+ * _printf_runtime - delegate function of _printf
  * @ctx: context_t ptr
 */
 void	_printf_runtime(context_t *ctx)
@@ -34,29 +34,24 @@ void	_printf_runtime(context_t *ctx)
 }
 
 /**
- * _printf - function
+ * _printf - prints @format to stdout using format specifiers 
  * @format: const char ptr
  *
  * Return: characters printed
 */
-int	_printf(const char *format, ...)
+i32	_printf(const char *format, ...)
 {
-	i32		r;
 	context_t	*ctx;
 
 	if (!format)
 		return (-1);
-
+	
 	ctx = context_new(0);
 	ctx->f = format;
 
 	va_start(ctx->l, format);
-
 	_printf_runtime(ctx);
-
 	va_end(ctx->l);
-
-	r = ctx->r;
-	context_free(ctx);
-	return (r);
+	
+	return (context_consume(ctx));
 }

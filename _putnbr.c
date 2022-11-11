@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _putnbr_runtime_i64 - function
+ * _putnbr_runtime_i64 - recursive delegate function to _putnbr for signed numbers
  * @ctx: context_t ptr
  * @v: i64
  * @b: str
@@ -31,7 +31,7 @@ void	_putnbr_runtime_i64(context_t *ctx, i64 v, str b, i32 l)
 }
 
 /**
- * _putnbr_runtime_u64 - function
+ * _putnbr_runtime_u64 - recursive delegate function to _putnbr for unsigned numbers
  * @ctx: context_t ptr
  * @v: u4
  * @b: str
@@ -54,7 +54,7 @@ void	_putnbr_runtime_u64(context_t *ctx, u64 v, str b, i32 l)
 }
 
 /**
- * _putnbr - function
+ * _putnbr - prints any <= 64 bits number in a given base
  * @ctx: context_t ptr
  * @val: u64
  * @sign: i32

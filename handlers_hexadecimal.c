@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _printf_handler_hexadecimal_lower - function
+ * _printf_handler_hexadecimal_lower - handles %x
  * @ctx: context_t ptr
 */
 void	_printf_handler_hexadecimal_lower(context_t *ctx)
@@ -15,7 +15,7 @@ void	_printf_handler_hexadecimal_lower(context_t *ctx)
 }
 
 /**
- * _printf_handler_hexadecimal_upper - function
+ * _printf_handler_hexadecimal_upper - handles %X
  * @ctx: context_t ptr
 */
 void	_printf_handler_hexadecimal_upper(context_t *ctx)
@@ -28,7 +28,7 @@ void	_printf_handler_hexadecimal_upper(context_t *ctx)
 }
 
 /**
- * _printf_handler_pointer - function
+ * _printf_handler_pointer - handles %p
  * @ctx: context_t ptr
 */
 void	_printf_handler_pointer(context_t *ctx)

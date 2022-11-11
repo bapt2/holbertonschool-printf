@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _printf_handler_integer - function
+ * _printf_handler_integer - handles %d and %i
  * @ctx: context_t ptr
 */
 void	_printf_handler_integer(context_t *ctx)
@@ -15,7 +15,7 @@ void	_printf_handler_integer(context_t *ctx)
 }
 
 /**
- * _printf_handler_unsigned - function
+ * _printf_handler_unsigned - handles %u
  * @ctx: context_t ptr
 */
 void	_printf_handler_unsigned(context_t *ctx)
@@ -28,7 +28,7 @@ void	_printf_handler_unsigned(context_t *ctx)
 }
 
 /**
- * _printf_handler_binary - function
+ * _printf_handler_binary - handles %b
  * @ctx: context_t ptr
 */
 void	_printf_handler_binary(context_t *ctx)
@@ -41,7 +41,7 @@ void	_printf_handler_binary(context_t *ctx)
 }
 
 /**
- * _printf_handler_octal - function
+ * _printf_handler_octal - handles %o
  * @ctx: context_t ptr
 */
 void	_printf_handler_octal(context_t *ctx)
@@ -54,7 +54,7 @@ void	_printf_handler_octal(context_t *ctx)
 }
 
 /**
- * _printf_handler_percent - function
+ * _printf_handler_percent - handles %%
  * @ctx: context_t ptr
 */
 void	_printf_handler_percent(context_t *ctx)

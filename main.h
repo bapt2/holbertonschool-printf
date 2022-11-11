@@ -71,7 +71,7 @@ context_t	*context_new(context_t *ctx);
 context_t	*context_free(context_t *ctx);
 context_t	*context_init_handlers(context_t *ctx);
 context_t	*context_write(context_t *ctx, void *src, i32 size);
-context_t	*context_flush(context_t *ctx);
+i32		context_consume(context_t *ctx);
 
 buffer_t	*buffer_new(buffer_t *buf);
 buffer_t	*buffer_free(buffer_t *buf);

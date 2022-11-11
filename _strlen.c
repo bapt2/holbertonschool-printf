@@ -2,7 +2,7 @@
 #include "typestr.h"
 
 /**
- * _strlen - function
+ * _strlen - gets length of string by iteration
  * @s: const char ptr
  *
  * Return: size_t

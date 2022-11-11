@@ -65,6 +65,7 @@ void		*malloc_try(size_t size);
 size_t		_strlen(const char *s);
 char		*_strrev(char *s);
 char		*_strdup(char *s);
+char		*rot13(char *str);
 void		_putnbr(context_t *ctx, u64 val, i32 sign, char *base);
 
 context_t	*context_new(context_t *ctx);

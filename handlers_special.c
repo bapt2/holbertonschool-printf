@@ -44,7 +44,6 @@ void	_printf_handler_normal(context_t *ctx)
 void    _printf_handler_rot13ed_string(context_t *ctx)
 {
 	char	*v;
-	i32	 x;
 
 	v = (char *) va_arg(ctx->l, char *);
 	if (!v)
@@ -52,12 +51,8 @@ void    _printf_handler_rot13ed_string(context_t *ctx)
 		v = _strdup("(null)");
 	}
 	else
-	{
-		v = _strdup(v);
-		for (x = 0; v[x] <= 13; x++)
-			;
-	}
-	context_write(ctx, &v, 1);
+		v = rot13(_strdup(v));
+	context_write(ctx, v, _strlen(v));
 	ctx->i += 1;
 	free(v);
 }

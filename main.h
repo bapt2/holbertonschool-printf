@@ -50,6 +50,10 @@ struct handler
  * @l: va_list
  * @r: i32
  * @i: i32
+ * @os: i32
+ * @on: i32
+ * @ol: i32
+ * @oh: i32
 */
 struct context
 {

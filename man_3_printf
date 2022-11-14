@@ -9,6 +9,8 @@ _printf \- print
 int _printf(const char *format, ...);
 .SH DESCRIPTION
 _Printf is a function that allow us to print argument according to format or executing according to options
+.SH RETURNS VALUES
+number of character printed except '\0'
 .SH OPTIONS AND EXAMPLE
 there are the following options and there example for the moment
 .TP
